@@ -21,7 +21,6 @@ public class LibraryOperationTest
         expectedAvailableBooksInLibrary.add(new Book("203","Python"));
         expectedAvailableBooksInLibrary.add(new Book("204","Ruby"));
 
-
         LibraryOperations operation = new LibraryOperations();
         Set<Book> getAvailableBooksInLibrary = operation.getAllAvailableBooks();
 
@@ -29,4 +28,20 @@ public class LibraryOperationTest
         expectedAvailableBooksInLibrary.add(new Book("205","Spring"));
         assertNotEquals(expectedAvailableBooksInLibrary, getAvailableBooksInLibrary);
     }
+
+    @Test
+    public void getNoBooksWhenBooksAreNotPresent()
+    {
+        Set<Book> expectedAvailableBooksInLibrary = new HashSet<>();
+        expectedAvailableBooksInLibrary.add(new Book("201","Java"));
+
+        LibraryOperations operation = new LibraryOperations();
+        Set<Book> getAvailableBooksInLibrary = operation.getAllAvailableBooks();
+
+        assertEquals(0 , getAvailableBooksInLibrary.size());
+        assertNotEquals(expectedAvailableBooksInLibrary, getAvailableBooksInLibrary);
+    }
+
+
+
 }
