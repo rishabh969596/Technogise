@@ -69,4 +69,25 @@ public class LibraryOperationTest
 
     }
 
+    @Test
+    public void shouldNotBorrowBookIfTwoBooksPresentInBorrowedList()
+    {
+        LibraryUtil.addDataToUserList();
+        LibraryUtil.addDataToBookList();
+        String userId = "101";
+        String bookOneId = "201";
+        String bookTwoId = "202";
+        String bookThreeId = "203";
+        LibraryOperations operation = new LibraryOperations();
+
+        operation.borrowBookToUser(userId, bookOneId);
+        operation.borrowBookToUser(userId, bookTwoId);
+        String expected = "Already have 2 books";
+        String actual = operation.borrowBookToUser(userId, bookThreeId);
+
+        assertEquals(expected, actual);
+
+
+    }
+
 }

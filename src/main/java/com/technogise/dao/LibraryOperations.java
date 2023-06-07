@@ -62,7 +62,7 @@ public class LibraryOperations {
         return userList.get(user);
     }
 
-    public void borrowBookToUser(String UserId, String BookId)
+    public String borrowBookToUser(String UserId, String BookId)
     {
         User user=getUserById(UserId);
         Book book=getBookById(BookId);
@@ -70,13 +70,15 @@ public class LibraryOperations {
         {
             List<Book> borrowList = getBorrowBookListByUser(user);
             if(borrowList.size()>=2)
-                System.out.println("Already have 2 books");
+                return "Already have 2 books";
             else
             {
                 borrowList.add(book);
                 removeBookCopyfromLibrary(book);
+                return "Book Added";
             }
         }
+        return "User or Book is not present";
     }
 
     public void removeBookCopyfromLibrary(Book book)
