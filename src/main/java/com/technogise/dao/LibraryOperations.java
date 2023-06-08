@@ -1,5 +1,6 @@
 package com.technogise.dao;
 
+import com.technogise.exception.BookOutOfBoundException;
 import com.technogise.model.Book;
 import com.technogise.model.User;
 import com.technogise.model.Library;
@@ -71,7 +72,14 @@ public class LibraryOperations {
         {
             List<Book> borrowList = getBorrowBookListByUser(user);
             if(borrowList.size()>=2)
-                return AppConstants.ALREADY_HAVE_TWO_BOOKS;
+            {
+                try {
+                    throw new BookOutOfBoundException(AppConstants.ALREADY_HAVE_TWO_BOOKS);
+                }
+                catch (BookOutOfBoundException exception) {
+                    return exception.getMsg();
+                }
+            }
             else
             {
                 borrowList.add(book);

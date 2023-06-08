@@ -3,6 +3,7 @@ package com.technogise.dao;
 import com.technogise.model.Book;
 import com.technogise.model.Library;
 import com.technogise.model.User;
+import com.technogise.util.AppConstants;
 import com.technogise.util.LibraryUtil;
 import org.junit.Test;
 
@@ -82,7 +83,7 @@ public class LibraryOperationTest
 
         operation.borrowBookToUser(userId, bookOneId);
         operation.borrowBookToUser(userId, bookTwoId);
-        String expected = "Already have 2 books";
+        String expected = AppConstants.ALREADY_HAVE_TWO_BOOKS;
         String actual = operation.borrowBookToUser(userId, bookThreeId);
 
         assertEquals(expected, actual);
