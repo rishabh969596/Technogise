@@ -3,6 +3,7 @@ package com.technogise;
 import com.technogise.dao.LibraryOperations;
 import com.technogise.model.Book;
 import com.technogise.util.LibraryUtil;
+import com.technogise.util.AppConstants;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class LibraryManagementApp {
                 case 1:
                     Set<Book> bookList = operation.getAllAvailableBooks();
                     if(bookList.size() == 0)
-                        System.out.println("No Books Available");
+                        System.out.println(AppConstants.NO_BOOKS_AVAILABLE);
                     else
                     {
                         for(Book b: bookList)

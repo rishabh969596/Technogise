@@ -3,6 +3,7 @@ package com.technogise.dao;
 import com.technogise.model.Book;
 import com.technogise.model.User;
 import com.technogise.model.Library;
+import com.technogise.util.AppConstants;
 
 import java.util.*;
 
@@ -70,15 +71,15 @@ public class LibraryOperations {
         {
             List<Book> borrowList = getBorrowBookListByUser(user);
             if(borrowList.size()>=2)
-                return "Already have 2 books";
+                return AppConstants.ALREADY_HAVE_TWO_BOOKS;
             else
             {
                 borrowList.add(book);
                 removeBookCopyfromLibrary(book);
-                return "Book Added";
+                return AppConstants.BOOK_ADDED_MSG;
             }
         }
-        return "User or Book is not present";
+        return  AppConstants.BOOK_NOT_ADDED_MSG;
     }
 
     public void removeBookCopyfromLibrary(Book book)
